@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Heranca_relacao.Entities
+﻿namespace Heranca_relacao.Entities
 {
     class SavingsAccount : Account
     {
@@ -19,6 +13,15 @@ namespace Heranca_relacao.Entities
         public void UpdateBalance()
         {
             Balance += Balance * InterestRate;
+        }
+
+        public override void Withdraw(double amount)
+        {
+            // Balance -= amount; Caso não descontasse R$ 5
+
+            // Caso desconte além do atual mais R$ 2
+            base.Withdraw(amount);
+            Balance -= 2;
         }
     }
 }

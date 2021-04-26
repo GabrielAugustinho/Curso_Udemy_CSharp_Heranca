@@ -7,7 +7,8 @@ namespace Heranca_relacao
     {
         static void Main(string[] args)
         {
-            Account acc = new Account(1001, "Alex", 0.0);
+            // Upcasting e Downcasting
+
             BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
 
             // UPCASTING
@@ -35,6 +36,18 @@ namespace Heranca_relacao
                 acc5.UpdateBalance();
                 Console.WriteLine("Update!");
             }
+
+            // Sobreescrever
+
+            Account acc6 = new Account(1001, "Alex", 500.0);
+            Account acc7 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
+
+            acc6.Withdraw(10.0);
+            acc7.Withdraw(10.0);
+
+            Console.WriteLine(acc6.Balance);
+            Console.WriteLine(acc7.Balance);
+
         }
     }
 }
