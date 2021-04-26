@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Collections.Generic;
 using Heranca_relacao.Entities;
 
 namespace Heranca_relacao
@@ -37,17 +39,54 @@ namespace Heranca_relacao
                 Console.WriteLine("Update!");
             }
 
+
+
+
             // Sobreescrever
 
-            Account acc6 = new Account(1001, "Alex", 500.0);
             Account acc7 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
 
-            acc6.Withdraw(10.0);
+            //acc6.Withdraw(10.0);
             acc7.Withdraw(10.0);
 
-            Console.WriteLine(acc6.Balance);
+            //Console.WriteLine(acc6.Balance);
             Console.WriteLine(acc7.Balance);
 
+
+
+
+            // Classes Abstratas
+
+            // Agora o account não pode ser instanciado pois é do tipo Abstract (polimorfismo e reuso)
+            // Account acc6 = new Account(1001, "Alex", 500.0); 
+
+            List<Account> list = new List<Account>();
+            list.Add(new SavingsAccount(1001, "Alex", 500.0, 0.01));
+            list.Add(new BusinessAccount(1002, "Maria", 500.0, 400.0));
+            list.Add(new SavingsAccount(1003, "Bob", 500.0, 0.01));
+            list.Add(new BusinessAccount(1002, "Anna", 500.0, 500.0));
+
+            double sum = 0.0;
+
+            foreach (Account acc in list)
+            {
+                sum += acc.Balance;
+            }
+
+            Console.WriteLine("Total Balance: " + sum.ToString("F2", CultureInfo.InvariantCulture));
+
+            foreach (Account acc in list)
+            {
+                acc.Withdraw(10.0);
+            }
+
+            foreach (Account acc in list)
+            {
+                Console.WriteLine("Update balance for accont: "
+                    + acc.Number
+                    + ": "
+                    + acc.Balance.ToString("F2", CultureInfo.InvariantCulture));
+            }
         }
     }
 }
