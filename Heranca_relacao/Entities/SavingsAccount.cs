@@ -1,6 +1,6 @@
 ﻿namespace Heranca_relacao.Entities
 {
-    class SavingsAccount : Account
+    sealed class SavingsAccount : Account
     {
         public double InterestRate { get; set; }
 
@@ -15,7 +15,7 @@
             Balance += Balance * InterestRate;
         }
 
-        public override void Withdraw(double amount)
+        public sealed override void Withdraw(double amount)
         {
             // Balance -= amount; Caso não descontasse R$ 5
 
