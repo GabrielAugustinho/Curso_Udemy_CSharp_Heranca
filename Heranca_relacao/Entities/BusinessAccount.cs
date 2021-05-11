@@ -1,4 +1,6 @@
-﻿namespace Heranca_relacao.Entities
+﻿using Heranca_relacao.Entities.Exceptions;
+
+namespace Heranca_relacao.Entities
 {
     class BusinessAccount : Account
     {
@@ -6,19 +8,20 @@
 
         public BusinessAccount() { }
 
-        public BusinessAccount(int number, string holder, double balance, double loanLimit) 
-            : base(number, holder, balance)
+        public BusinessAccount(int number, string holder, double balance, double withDrawLimit, double loanLimit)
+            : base(number, holder, balance, withDrawLimit)
         {
             LoanLimit = loanLimit;
         }
 
         public void Loan(double amount)
         {
-            if (amount <= LoanLimit)
+            if (amount > LoanLimit)
             {
-                Balance += amount;
+                throw new DomainException("Error on Withdraw: You have limit on loan.");
             }
 
+            Balance += amount;
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿namespace Heranca_relacao.Entities
+﻿using Heranca_relacao.Entities.Exceptions;
+
+namespace Heranca_relacao.Entities
 {
     sealed class SavingsAccount : Account
     {
         public double InterestRate { get; set; }
 
         public SavingsAccount() { }
-        public SavingsAccount(int number, string holder, double balance, double interestRate) 
-            : base(number, holder, balance)
+        public SavingsAccount(int number, string holder, double balance, double interestRate, double withDrawLimit) 
+            : base(number, holder, balance, withDrawLimit)
         {
             InterestRate = interestRate;
         }

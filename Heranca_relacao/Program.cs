@@ -11,13 +11,13 @@ namespace Heranca_relacao
         {
             // Upcasting e Downcasting
 
-            BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
+            BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0, 300.0);
 
             // UPCASTING
 
             Account acc1 = bacc;
-            Account acc2 = new BusinessAccount(1003, "João", 0.0, 200.0);
-            Account acc3 = new SavingsAccount(1004, "Ana", 0.0, 0.01);
+            Account acc2 = new BusinessAccount(1003, "João", 0.0, 200.0, 300.0);
+            Account acc3 = new SavingsAccount(1004, "Ana", 0.0, 0.01, 300.0);
 
             // DOWNCASTING "Operaão insegura."
 
@@ -44,7 +44,7 @@ namespace Heranca_relacao
 
             // Sobreescrever
 
-            Account acc7 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
+            Account acc7 = new SavingsAccount(1002, "Ana", 500.0, 0.01, 300.0);
 
             //acc6.Withdraw(10.0);
             acc7.Withdraw(10.0);
@@ -61,10 +61,10 @@ namespace Heranca_relacao
             // Account acc6 = new Account(1001, "Alex", 500.0); 
 
             List<Account> list = new List<Account>();
-            list.Add(new SavingsAccount(1001, "Alex", 500.0, 0.01));
-            list.Add(new BusinessAccount(1002, "Maria", 500.0, 400.0));
-            list.Add(new SavingsAccount(1003, "Bob", 500.0, 0.01));
-            list.Add(new BusinessAccount(1002, "Anna", 500.0, 500.0));
+            list.Add(new SavingsAccount(1001, "Alex", 500.0, 0.01, 300.0));
+            list.Add(new BusinessAccount(1002, "Maria", 500.0, 400.0, 300.0));
+            list.Add(new SavingsAccount(1003, "Bob", 500.0, 0.01, 300.0));
+            list.Add(new BusinessAccount(1002, "Anna", 500.0, 500.0, 300.0));
 
             double sum = 0.0;
 
